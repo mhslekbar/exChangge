@@ -1,0 +1,211 @@
+* {
+    /* direction: rtl; */
+}
+:root{
+    /* text color */
+    --yellow: #f1c40f;
+    /* background-color */
+    --dark: #000;
+}
+
+.recu {
+    color: #080;
+    font-weight: bold;
+}
+
+.noRecu {
+    color: #F00;
+    font-weight: bold;
+}
+
+.a-nav {
+    color: #FFF !important;
+}
+
+.thead-primary {
+    background-color: #0d6efd;
+    color: #FFF;
+}
+
+.navbar-expand-lg .navbar-nav .dropdown-menu .dropdown-item:hover {
+    background-color: var(--yellow);
+    color: var(--dark) !important;
+}
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav .dropdown-menu {
+        position: absolute;
+        left: -166px;
+    }    
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.container-500 {
+    min-height: 500px;
+}
+
+.p-select {
+    position: relative;
+}
+.p-select .p-arrow {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Start Branchs */
+.total-solde {
+    color: #080;
+    font-weight: bold;
+}
+/* Start Charger Branchs */
+.montDevise {
+    position: relative;
+}
+
+.montDevise input {
+    width: 85%;
+}
+
+.montDevise span {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+}
+
+@media (max-width: 567px) {
+    .montDevise input {
+        width: 85%;
+    }
+    
+    .montDevise span {
+        top: 10px;
+        right: 5px;
+    }   
+}
+
+
+/* End Charger Branchs */
+
+/* Start Table de Borad */
+
+ .WETASPHALT {
+    background-color: #34495e;
+    color: #FFF;
+}
+
+ .GREESEAN {
+    background-color: #16a085;
+    color: #FFF;
+}
+
+ .CARROT {
+    background-color: #e58e26;
+    color: #FFF;
+}
+
+ .BLUE {
+    background-color: #2980b9;
+    color: #FFF;
+}
+
+ .POMEGRANATE {
+    background-color: #c0392b;
+    color: #FFF;
+}
+
+ .LIGHTPURPLE {
+    background-color: #a55eea;
+    color: #FFF;
+}
+
+ .BRIGHTYARROW {
+    background-color: #e17055;
+    color: #FFF;
+}
+
+.BELIZEHOTEL {
+    background-color: #2980b9;
+    color: #FFF;
+}
+
+.area {
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+ .area div.content {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+ .area a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+ .area div.content p {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+
+/* End Table de Borad */
+
+
+/* Start Transactions */
+.convertMontant {
+    position: relative;
+}
+
+.convertMontant input {
+    width: 85%;
+}
+
+.convertMontant span {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.convertMontant span.sp {
+    top: 30px;
+}
+
+
+/* End Transactions */
+
+
+/* Start CUstomers */
+.cstmSearch {
+    position: relative;
+}
+
+.cstmSearch input:first-child {
+    max-width: 310px
+}
+
+.cstmSearch i {
+    position: absolute;
+    top: 13px;
+    left: 290px;
+}
+
+.searchNotFound {
+    font-weight: bold;
+    color:#F00;
+}
+
+/* END CUstomers */
