@@ -351,7 +351,7 @@
         echo "</div>";
         include $tpl . "footer.php";
     else:
-        include "index.php";
+        header("Location: ../index.php");
     endif;
     ob_end_flush();
 ?>
