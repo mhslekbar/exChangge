@@ -9,7 +9,7 @@
         $today = date("Y-m-d");
         
         echo "<div class='container container-500 dashboard'>";
-            echo "<h1 class='text-center mt-3 mb-3'>Table de Board</h1>";
+            echo "<h1 class='text-center mt-3 mb-3'>Tableau de bord</h1>";
     ?>   
         <div class="row">
         
