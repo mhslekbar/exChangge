@@ -7,6 +7,21 @@
     color: #000;
 }
 
+#nvbrA {
+    background-color: #FFF;
+    color: #0d6efd;
+    border: 3px solid #0d6efd;
+    padding: 5px;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+#nvbrA:hover {
+    background-color: #0d6efd;
+    color: #FFF;
+    border: 3px solid #FFF;
+}
+
 :root{
     /* text color */
     --yellow: #f1c40f;
