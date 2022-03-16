@@ -87,7 +87,7 @@
                         try {
                             $update = $Customers->updateCustomerSolde($newSoldeCust,$phone);
                             if($update > 0) {
-                                $Customers->insertTransCust($idCust,$phone,$fname,$amount,$type);
+                                $Customers->insertTransCust($idCust,$brnch['bbid'],$phone,$fname,$amount,$type);
                                 $Customers->updateBranchBalance($newBalanceCashier,$brnch['bbid']);
                                 $theMsg = "<div class='alert alert-success msg'>Montant a èté déposer avec succés</div>";
                             } else {
@@ -179,9 +179,9 @@
                         try {
                             $update = $Customers->updateCustomerSolde($newSoldeCust,$phone);
                             if($update > 0) {
-                                $Customers->insertTransCust($idCust,$phone,$fname,$amount,$type);
+                                $Customers->insertTransCust($idCust,$brnch['bbid'],$phone,$fname,$amount,$type);
                                 $Customers->updateBranchBalance($newBalanceCashier,$brnch['bbid']);
-                                $theMsg = "<div class='alert alert-success msg'>Montant a èté déposer avec succés</div>";
+                                $theMsg = "<div class='alert alert-success msg'>Montant a èté retirer avec succés</div>";
                             } else {
                                 echo "error";
                             }
@@ -228,7 +228,7 @@
                 </thead>
                 <tbody>
                     <?php $today = date("Y-m-d"); $brnch = $Customers->getBrnch($_SESSION['userid']);?>
-                    <?php $transCusts = $Customers->getTransCust($today); foreach($transCusts as $transCust):?>
+                    <?php $transCusts = $Customers->getTransCust($today,$brnch['bbid']); foreach($transCusts as $transCust):?>
                     <tr>
                         <th scope="row"><?=$transCust['tcID'];?></th>
                         <td><?=$transCust['tcPhone'];?></td>
