@@ -88,7 +88,7 @@
 
         include $tpl . "footer.php";
     else:
-        header("Location: index.php");
+        header("Location: ../index.php");
     endif;
     ob_end_flush();
 ?>
