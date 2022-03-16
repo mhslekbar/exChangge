@@ -6,7 +6,7 @@
         include "init.php";
         $Dashborad = new DashBoard();
         echo "<div class='container container-500 dashboard'>";
-            echo "<h1 class='text-center mt-3 mb-3'>Table de Board</h1>";
+            echo "<h1 class='text-center mt-3 mb-3'>Tableau de bord</h1>";
     ?>   
         <div class="row">
                 <?=AreaDisplayLayout("rates.php","DEVISE",$Dashborad->countRates(),"WETASPHALT","fas fa-chart-line fa-5x");?>
@@ -23,7 +23,7 @@
         echo "</div>";
         include $tpl . "footer.php";
     else:
-        header("Location: index.php");
+        header("Location: ../index.php");
     endif;
     ob_end_flush();
 ?>
