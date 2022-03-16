@@ -299,10 +299,12 @@
                     $getCust = $Transfere->getNoCust($contactReceipt);                    
                     $amount = 0;
                     $prevBalance = 0;
-
+                    $brnchSolde = 0;
+                    
                     if( ($getCust>0) && !empty($contactReceipt)){
                         $amount = $getCust['nnAmountReceipt'];
-                        if($amount  > $branch['bbBalance']) {
+                        $brnchSolde = $branch['bbBalance'];
+                        if($amount  > $brnchSolde) {
                             $formErrors[] = "Montant n'existe pas dans la caisse";
                         } else{
                             $prevBalance = $branch['bbBalance'] - $amount;    
