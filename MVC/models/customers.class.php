@@ -19,6 +19,24 @@ class Customers extends Database {
         $stmt->execute([$phone]);
         return $stmt->fetch();
     }
+    
+    public function branch($bbid) {
+        $stmt = $this->connect()->prepare("SELECT * FROM branchs WHERE bbid = ?");
+        $stmt->execute([$bbid]);
+        return $stmt->fetch();
+    }
+    
+    public function getSymbol($idRR) {
+        $stmt = $this->connect()->prepare("SELECT * FROM rates WHERE idRR = ?");
+        $stmt->execute([$idRR]);
+        return $stmt->fetch();
+    }
+
+    public function getRateOfBrnch($brnch,$symbol) {
+        $stmt = $this->connect()->prepare("SELECT * FROM ratebranchs WHERE idBranchRR = ? AND currencyRR = ?");
+        $stmt->execute([$brnch,$symbol]);
+        return $stmt->fetch();
+    }
 
     public function updateBranchBalance($solde,$bbid) {
         $stmt = $this->connect()->prepare("UPDATE branchs SET bbBalance = ? WHERE bbid = ?");
@@ -32,9 +50,9 @@ class Customers extends Database {
         return $stmt->rowCount();
     }
 
-    public function insertTransCust($idCust,$brnch,$phone,$fname,$montant,$type) {
-        $stmt = $this->connect()->prepare("INSERT INTO zztranscustomer (tcIdCust,tcIdBranch,tcPhone,tcFullName,tcAmount,tcType,tcDate) VALUES (?,?,?,?,?,?,now()) ");
-        $stmt->execute([$idCust,$brnch,$phone,$fname,$montant,$type]);
+    public function insertTransCust($idCust,$brnch,$phone,$fname,$montant,$amountConvert,$type) {
+        $stmt = $this->connect()->prepare("INSERT INTO zztranscustomer (tcIdCust,tcIdBranch,tcPhone,tcFullName,tcAmount,tcAmountConvert,tcType,tcDate) VALUES (?,?,?,?,?,?,?,now()) ");
+        $stmt->execute([$idCust,$brnch,$phone,$fname,$montant,$amountConvert,$type]);
         return $stmt->rowCount();
     }
 
@@ -72,11 +90,6 @@ class Customers extends Database {
         return $stmt->fetchAll();
     }
     
-    public function getSymbol($idRR) {
-        $stmt = $this->connect()->prepare("SELECT * FROM rates WHERE idRR = ?");
-        $stmt->execute([$idRR]);
-        return $stmt->fetch();
-    }
   
     public function insertRecord($branchSender, $contactSender, $branchReceipt, $contactReceipt, $nameReceipt, $amountSender, $amountReceipt, $Benef, $type) {
         $stmt = $this->connect()->prepare("INSERT INTO zznocustomers (nnBranchSender, nnSenderContact, nnBranchReceipt, nnReceiptContact, nnReceiptName, nnAmountSend, nnAmountReceipt, nnBenef, nnType, nnValider, nnDate) VALUES (?,?,?,?,?,?,?,?,?,0,now())  ");
@@ -101,11 +114,7 @@ class Customers extends Database {
     }
     
 
-    public function branch($bbid) {
-        $stmt = $this->connect()->prepare("SELECT * FROM branchs WHERE bbid = ?");
-        $stmt->execute([$bbid]);
-        return $stmt->fetch();
-    }
+
 
     public function getBranchWHereName($bname) {
         $stmt = $this->connect()->prepare("SELECT * FROM branchs WHERE bbBrancheName = ?");
@@ -125,7 +134,6 @@ class Customers extends Database {
         return $stmt->rowCount();
     }  
 
-    
     /**   END Customers No Approve  */
 
 
