@@ -100,7 +100,7 @@ class Customers extends Database {
     // STatistiques OF Customers
     // From TransCustomer Table
     public function getTransCusts($idCust) {
-        $stmt = $this->connect()->prepare("SELECT * FROM zztranscustomer WHERE tcIdCust = ? ORDER BY tcIdCust DESC");
+        $stmt = $this->connect()->prepare("SELECT * FROM zztranscustomer WHERE tcIdCust = ? ORDER BY tcID DESC");
         $stmt->execute([$idCust]);
         return $stmt->fetchAll();
     }
