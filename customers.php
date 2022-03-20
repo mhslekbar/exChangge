@@ -46,7 +46,12 @@
                     
                     $cust  = $Customers->getCustomer($phone);
                     $brnch = $Customers->getBrnch($_SESSION['userid']);
-
+                    $symbol =  $Customers->getSymbol($Customers->branch($cust['ccAddress'])['bbCurrencyType'])['currencyRR'];
+                    $rateDevise  = $Customers->getRateOfBrnch($brnch['bbid'],$symbol)['retail_price'];
+                    
+                    // convertir l'argent vers le devise de la branche du client
+                    $amountConvert = $amount / $rateDevise;
+                    
                     $formErrors = [];
 
                     if(empty($phone)){
@@ -72,7 +77,7 @@
                     $newSoldeCust = 0;
                     if(!empty($cust)){
                         $prevSoldeCust  = $cust['ccSolde'];
-                        $newSoldeCust   = (float)$prevSoldeCust + (float)$amount;
+                        $newSoldeCust   = (float)$prevSoldeCust + (float)$amountConvert;
                         $fname          = $cust['ccFullName']; 
                         $idCust         = $cust['ccID'];
                         $type           = "versement";
@@ -87,7 +92,7 @@
                         try {
                             $update = $Customers->updateCustomerSolde($newSoldeCust,$phone);
                             if($update > 0) {
-                                $Customers->insertTransCust($idCust,$brnch['bbid'],$phone,$fname,$amount,$type);
+                                $Customers->insertTransCust($idCust,$brnch['bbid'],$phone,$fname,$amount,$amountConvert,$type);
                                 $Customers->updateBranchBalance($newBalanceCashier,$brnch['bbid']);
                                 $theMsg = "<div class='alert alert-success msg'>Montant a èté déposer avec succés</div>";
                             } else {
@@ -137,7 +142,12 @@
                     
                     $cust  = $Customers->getCustomer($phone);
                     $brnch = $Customers->getBrnch($_SESSION['userid']);
-
+                    $symbol =  $Customers->getSymbol($Customers->branch($cust['ccAddress'])['bbCurrencyType'])['currencyRR'];
+                    $rateDevise  = $Customers->getRateOfBrnch($brnch['bbid'],$symbol)['retail_price'];
+                    
+                    // convertir l'argent vers le devise de la branche du client
+                    $amountConvert = $amount / $rateDevise;
+                    
                     $formErrors = [];
 
                     if(empty($phone)){
@@ -163,7 +173,7 @@
                     $newSoldeCust = 0;
                     if(!empty($cust)){
                         $prevSoldeCust  = $cust['ccSolde'];
-                        $newSoldeCust   = (float)$prevSoldeCust - (float)$amount;
+                        $newSoldeCust   = (float)$prevSoldeCust - (float)$amountConvert;
                         $fname          = $cust['ccFullName']; 
                         $idCust         = $cust['ccID'];
                         $type           = "retrait";
@@ -179,7 +189,7 @@
                         try {
                             $update = $Customers->updateCustomerSolde($newSoldeCust,$phone);
                             if($update > 0) {
-                                $Customers->insertTransCust($idCust,$brnch['bbid'],$phone,$fname,$amount,$type);
+                                $Customers->insertTransCust($idCust,$brnch['bbid'],$phone,$fname,$amount,$amountConvert,$type);
                                 $Customers->updateBranchBalance($newBalanceCashier,$brnch['bbid']);
                                 $theMsg = "<div class='alert alert-success msg'>Montant a èté retirer avec succés</div>";
                             } else {
