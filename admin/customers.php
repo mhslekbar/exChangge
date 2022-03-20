@@ -450,10 +450,14 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $i=1; foreach($Customers->getTransCusts($idCust) as $TransCust): ?>
+                            <?php $i=1; foreach($Customers->getTransCusts($idCust) as $TransCust): 
+                                $currenCyRR = $Customers->getRate($Customers->getBranch($Customers->getCustomer($TransCust['tcIdCust'])['ccAddress'])['bbCurrencyType'])['currencyRR'];    
+                                $idRR = $Customers->getRate($Customers->getBranch($TransCust['tcIdBranch'])['bbCurrencyType'])['idRR'];
+                                $convertAmount =  $TransCust['tcAmount'] * ($Customers->getCurrencyFromRates($idRR)['retail_price']);
+                           ?>
                             <tr>
                                 <th scope="row"><?=$i;?></th>
-                                <td><?=removeComma($TransCust['tcAmount']) ." <strong>"  . $Customers->getRate($Customers->getBranch($Customers->getCustomer($TransCust['tcIdCust'])['ccAddress'])['bbCurrencyType'])['currencyRR'];?></strong></td>
+                                <td><?=removeComma($convertAmount) ." <strong>"  . $currenCyRR;?></strong></td>
                                 <td><?=$TransCust['tcType'];?></td>
                                 <td><?=$TransCust['tcDate'];?></td>
                             </tr>
