@@ -15,7 +15,7 @@
                 <?=AreaDisplayLayout("suppliers.php","FOURNISSEURS",$Dashborad->countSuppliers(),"POMEGRANATE","fas fa-user fa-5x");?>            
                 <?=AreaDisplayLayout("chargeBranch.php","CHARGER BRANCHES",$Dashborad->countChargerBranch(),"CARROT","fas fa-cart-plus fa-5x");?>
                 <?=AreaDisplayLayout("customers.php","CLIENTS",$Dashborad->countCustomers(),"LIGHTPURPLE","fas fa-user-tie fa-5x");?>
-                <?=AreaDisplayLayout("benefStats.php","BENEFICE","","HIGHBLUE","fas fa-chart-bar fa-5x");?>
+                <?=AreaDisplayLayout("benefStats.php","Statistiques","","HIGHBLUE","fas fa-chart-bar fa-5x");?>
                 
 
         </div>

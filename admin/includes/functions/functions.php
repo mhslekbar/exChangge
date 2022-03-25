@@ -5,11 +5,9 @@
         $path = "classes/";
         $extension = ".class.php";
         $fileName = $path . $classeName . $extension;
-        
         if(!file_exists($fileName)) {
             return false;
         }
-
         require $fileName;
     }   
 
@@ -33,7 +31,7 @@
                         <a href='$link'>
                         <i class='$font'></i>
                             <div class='content'>
-                            <strong>{$name}</strong><p class='text-center'>{$count}</p>
+                            <strong class='text-uppercase'>{$name}</strong><p class='text-center'>{$count}</p>
                             </div>
                         </a>    
                     </div>
