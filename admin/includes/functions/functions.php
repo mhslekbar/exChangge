@@ -24,9 +24,10 @@
     function removeComma($num) {
         return ($num - (int)$num) == 0 ? (int)$num : $num;  
     }
+        // return "<div class='col-sm'>
 
     function AreaDisplayLayout($link,$name,$count,$color,$font) {
-        return "<div class='col-sm-12 col-md-6 col-lg-4'>
+        return "<div class='col-md-6 col-lg-4'>
                     <div class='area $color mb-2'>
                         <a href='$link'>
                         <i class='$font'></i>
