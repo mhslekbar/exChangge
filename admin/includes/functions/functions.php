@@ -13,11 +13,12 @@
 
     function getTitle() {
         global $pageTitle;
-        if(isset($pageTitle)):
-            return $pageTitle;
-        else:
-            return "Default";
-        endif;
+        return $pageTitle ?? "Default";
+        // if(isset($pageTitle)):
+        //     return $pageTitle;
+        // else:
+        //     return "Default";
+        // endif;
 
     }
 
